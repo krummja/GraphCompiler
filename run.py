@@ -1,9 +1,30 @@
-from graph_compiler.parser import Parser
+from graph_compiler.parser import Parser, TestParser
 from graph_compiler.lexer import Lexer
 
 
 if __name__ == '__main__':
-    # parser = Parser(Lexer('abc { x: 10 }'))
-    parser = Parser(Lexer('7 + ((10 * 2))'))
-    result = parser.parse()
-    print(result)
+    lexer = Lexer('a + b { 100 x 1 };')
+
+    value = lexer.next_token()
+    print(value)
+    value = lexer.next_token()
+    print(value)
+    value = lexer.next_token()
+    print(value)
+    value = lexer.next_token()
+    print(value)
+    value = lexer.next_token()
+    print(value)
+    value = lexer.next_token()
+    print(value)
+    value = lexer.next_token()
+    print(value)
+    value = lexer.next_token()
+    print(value)
+    value = lexer.next_token()
+    print(value)
+    value = lexer.next_token()
+    print(value)
+    
+    parser = TestParser(Lexer('abc { a = 10 };'))
+    ast = parser.parse()

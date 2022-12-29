@@ -38,6 +38,9 @@ class Token:
     def __str__(self) -> str:
         return f"{self.text}, {TokenType(self.token_type).name}"
 
+    def __repr__(self) -> str:
+        return self.__str__()
+
     def __hash__(self) -> Hashable:
         return hash((self.token_type, self.text))
 
@@ -133,6 +136,9 @@ class Lexer:
                 case '/' as divide:
                     self.consume()
                     return Token(TokenType.DIV, divide)
+                case '=' as equals:
+                    self.consume()
+                    return Token(TokenType.EQUALS, equals)
 
                 # Complex
                 case _:
